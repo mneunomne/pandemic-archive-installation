@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simulation</title>
+    <meta name="description" content="Hello, World! • A-Frame">
+    <!-- aframe stuff -->
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/collada/dist/collada-model.js"></script>
+    <script src="./js/spawn-in-circle.js"></script>
+    <script src="./js/look-at-y.js"></script>
+    <script src="./js/simulation.js"></script>
+    <script src="./js/movement-restrictor.js"></script>
+    <script src="./js/script.js"></script>
+    <!-- other libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js" integrity="sha512-UFPpekaMf0TrCIkPv9mRT3reo/HzSjkOLq57Rtzb+E1ej1TRUOes6J/Ge4uZXyxWA9b4i5DqSZns79YaUoJ2kA==" crossorigin="anonymous"></script>
+    <style>
+      body {
+        font-family:'Courier New', Courier, monospace;
+        color: white;
+      }
+      #container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+      .description {
+        width: 100%;
+        max-width: 350px;
+        font-size: 13px;
+        padding: 15px; 
+      }
+    </style>
+  </head>
+  <body>
+    <div id="text-wrapper" style="width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: -1; overflow: hidden"></div>
+    <a-scene simulation background="color: #ECECEC" light="defaultLightsEnabled: false" >
+      <a-assets timeout="10000">
+        <video id="floor-projection" width="848" height="848" loop="true" quic="true" src="videos/recording_3.mp4"></video>
+        <!-- audios -->
+        <audio id="audio_speaker_1" src="audios/03_1.mp3" loop="true" preload="auto"></audio>
+        <audio id="audio_speaker_2" src="audios/03_2.mp3" loop="true" preload="auto"></audio>
+        <audio id="audio_speaker_3" src="audios/03_3.mp3" loop="true" preload="auto"></audio>
+        <audio id="audio_speaker_4" src="audios/03_4.mp3" loop="true" preload="auto"></audio>
+        <audio id="audio_speaker_5" src="audios/03_5.mp3" loop="true" preload="auto"></audio>
+        <audio id="audio_speaker_6" src="audios/03_6.mp3" loop="true" preload="auto"></audio>
+        <audio id="audio_speaker_7" src="audios/03_7.mp3" loop="true" preload="auto"></audio>
+        <audio id="audio_speaker_8" src="audios/03_8.mp3" loop="true" preload="auto"></audio>
+        
+        <!-- images -->
+        <img id="silhouette-image" src="images/unnamed-2.png"/>
+        
+        <a-asset-item id="loud-speaker" src="3d/Electronics_Speaker-On-Stand/model.dae"></a-asset-item>
+      </a-assets>
+      
+      <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;"> <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;" -->
+       <a-entity id="camera" rotation="-30.596 0.00 0.00" position="0.386 4.678 7.685" camera cursor="rayOrigin: mouse" raycaster="interval: 1000; objects: .clickable" wasd-controls="acceleration:50; fly: true;"></a-entity>
+       <!-- <a-entity id="camera" rotation="0 0.00 0.00" position="0 2.2 0" camera look-controls></a-entity> -->
+      </a-entity>
+
+      
+      <a-sky color="#000000"></a-sky>
+
+      <!-- room -->
+      <a-entity id="room" room="w: 16; h: 20; z: 20;">
+
+        <a-image src="#silhouette-image" width="1" height="1.8" position="0 0.8 0" look-at="#camera" material="alphaTest: 0.1; blending: subtractive;" visible="" geometry=""></a-image>
+
+        <a-video src="#floor-projection" width="10" height="10" rotation="-90 0 0" position="0 0.01 0"></a-video>
+        
+        <a-entity sound="src: #audio_speaker_5; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 0;" scale="1.7 1.7 1.7" rotation="0 -90 0" collada-model="src: #loud-speaker"></a-entity>
+        <a-entity sound="src: #audio_speaker_3; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 1;" scale="1.7 1.7 1.7" rotation="0 -90 0" collada-model="src: #loud-speaker"></a-entity>
+        <a-entity sound="src: #audio_speaker_1; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 2;" scale="1.7 1.7 1.7" rotation="0 -90 0" collada-model="src: #loud-speaker"></a-entity>
+        <a-entity sound="src: #audio_speaker_2; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 3;" scale="1.7 1.7 1.7" rotation="0 90 0" collada-model="src: #loud-speaker"></a-entity>
+        <a-entity sound="src: #audio_speaker_4; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 4;" scale="1.7 1.7 1.7" rotation="0 90 0" collada-model="src: #loud-speaker"></a-entity>
+        <a-entity sound="src: #audio_speaker_6; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 5;" scale="1.7 1.7 1.7" rotation="0 90 0" collada-model="src: #loud-speaker"></a-entity>
+        <a-entity sound="src: #audio_speaker_8; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 6;" scale="1.7 1.7 1.7" rotation="0 90 0" collada-model="src: #loud-speaker"></a-entity>
+        <a-entity sound="src: #audio_speaker_7; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 5; index: 7;" scale="1.7 1.7 1.7" rotation="0 90 0" collada-model="src: #loud-speaker"></a-entity>
+
+      </a-entity>
+      <a-entity light="color: #BBB; type: ambient; decay: 0.92; intensity: 0.0" data-aframe-default-light="" aframe-injected="" visible=""></a-entity>
+    </a-scene>
+    <div id="container">
+      <div class="description">
+        <p>"The living body is the central object of all politics."</p>
+        <p>The installation presents a dynamic archive of voices as an audio visual experience. This archive seeks to create a collective experience of sharing, provides a singular meditative space of communion among the diversity of cultures, backgrounds, as well as subjective perspectives during this time of a collective struggle.</p>
+        <p>Reflecting the global aspect of this hyper-event, this installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed which orbits in the present time of uncertainty.</p>
+        <button>play</button>
+      </div>
+    </div>
+  </body>
+</html>
