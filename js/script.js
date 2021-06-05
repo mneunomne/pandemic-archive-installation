@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }, 500);
   })
 
+  // show 
   const show = function () {
     $loading.addClass('hidden');
     setTimeout(() => {
@@ -62,8 +63,20 @@ document.addEventListener("DOMContentLoaded", function(){
     if (started) return;
     started = true;
     // button.style = "display: none;"
+    play()
+  }
+  
+  // loop 
+  video.addEventListener('ended', () => {
+    play()
+  })
+
+  // play audios and video
+  const play = function () {
+    video.stop();
     video.play();
     audios.forEach((audio) => {
+      audio.components.sound.stopSound();
       audio.components.sound.playSound();
     })
   }
