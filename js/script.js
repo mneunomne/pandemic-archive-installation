@@ -73,7 +73,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // play audios and video
   const play = function () {
-    video.stop();
+    video.pause();
+    video.currentTime = 0;
     video.play();
     audios.forEach((audio) => {
       audio.components.sound.stopSound();
@@ -98,5 +99,4 @@ document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('keydown', start);
   document.body.addEventListener('click', start);
   document.body.addEventListener('touchstart', start);
-
 })
