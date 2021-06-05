@@ -26,15 +26,32 @@
       }
       #container {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        padding: 15px; 
+        top: 0;
+        z-index: 99999;
+        height: 100vh;
+        width: 100vw;
         pointer-events: none;
+      }
+
+      #info {
+        margin-left: 1em;
+        max-width: 90%;
+      }
+      p {
+        font-size: 13px;
+        pointer-events: all;
+      }
+      a {
+        color: white;
+        pointer-events: all;
+      }
+      ::selection {
+        color: white;
+        background: gray;
       }
       #description {
         width: 100%;
         max-width: 350px;
-        font-size: 13px;
       }
       .button {
         background-color: transparent;
@@ -50,10 +67,6 @@
         color: black;
       }
 
-      #title {
-
-      }
-
       h3 {
         font-weight: normal;
         font-size: 16px;
@@ -61,6 +74,19 @@
       #scene {
         transition: opacity 0.5s;
       }
+      #credits {
+        position: absolute;
+        bottom: 2em;
+        font-size: 12px;
+      }
+      
+      #links {
+        position: absolute;
+        right: 1em;
+        bottom: 2em;
+        text-align: right;  
+      }
+
       .hidden {
         opacity: 0;
         transform: translateX(-50px);
@@ -123,11 +149,25 @@
       <a-entity light="color: #BBB; type: ambient; decay: 0.92; intensity: 0.0" data-aframe-default-light="" aframe-injected="" visible=""></a-entity>
     </a-scene>
     <div id="container">
-      <h3 id="title" class="text-transition hidden"><i>"The living body is the central object of all politics."</i></h3>
-      <div id="description" class="text-transition hidden">
-        <p>The installation presents a dynamic archive of voices as an audio visual experience. This archive seeks to create a collective experience of sharing, provides a singular meditative space of communion among the diversity of cultures, backgrounds, as well as subjective perspectives during this time of a collective struggle.</p>
-        <p>Reflecting the global aspect of this hyper-event, this installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed which orbits in the present time of uncertainty.</p>
-        <!--<button class="button">start</button>-->
+      <div id="info">
+        <h3 id="title" class="text-transition hidden"><a target="_blank" href="https://www.artforum.com/slant/paul-b-preciado-on-life-after-covid-19-82586">The living body is the central object of all politics.</a></h3>
+        <div id="description" class="text-transition hidden">
+          <p>The installation presents a dynamic archive of voices as an audio visual experience. This archive seeks to create a collective experience of sharing, provides a singular meditative space of communion among the diversity of cultures, backgrounds, as well as subjective perspectives during this time of a collective struggle.</p>
+          <p>Reflecting the global aspect of this hyper-event, this installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed which orbits in the present time of uncertainty.</p>
+          <!--<button class="button">start</button>-->
+        </div>
+        <div id="credits">
+          <p>
+            <i>concept and visuals:</i> <a target="_blank" href="https://www.albertoharres.com">alberto harres</a><br/><br/>
+            <i>composition and sound design:</i> <a target="_blank" href="http://www.chihimchik.com/">chi him chik</a>
+          </p>
+        </div>
+        <div id="links">
+          <p>
+            <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">archive database & API</a><br/><br/>
+            <a target="_blank" href="https://www.mixcloud.com/soundstudies/modulation-18-alberto-harres/">modulations on the fly podcast #18</a>
+          </p>
+        </div>
       </div>
     </div>
   </body>
