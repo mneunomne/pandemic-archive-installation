@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", function(){
   assets.addEventListener('loaded', (evt) => {
     console.log('loaded', evt)
     loaded = true
-    show()
-    dots_animation && clearInterval(dots_animation)
+    if (audios_loaded) {
+      show()
+      dots_animation && clearInterval(dots_animation)
+    }
   })
 
   // loading
@@ -112,6 +114,10 @@ document.addEventListener("DOMContentLoaded", function(){
       if (loaded_audios === 8) {
         console.log("all audio loaded!")
         audios_loaded = true
+        if (loaded) {
+          show()
+          dots_animation && clearInterval(dots_animation)
+        }
       }
     })
   })
