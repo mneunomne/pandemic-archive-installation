@@ -49,6 +49,7 @@
       p {
         font-size: 13px;
         pointer-events: all;
+        display: inline-block;
       }
       a {
         color: white;
@@ -86,31 +87,27 @@
       #scene {
         transition: opacity 0.5s;
       }
-      #credits {
-        position: absolute;
-        bottom: 2em;
-        font-size: 12px;
-      }
       
-      #links {
+      .align-right {
         position: absolute;
         right: 1em;
         bottom: 2em;
         text-align: right;  
       }
 
-      #credits.hidden, #description.hidden, #title.hidden {
+      #description.hidden, #title.hidden, #links.hidden {
         transform: translateX(-50px);
+      }
+
+      #credits.hidden {
+        opacity: 0;
+        transform: translateX(50px);
       }
       
       .hidden {
         opacity: 0;
       }
 
-      #links.hidden {
-        opacity: 0;
-        transform: translateX(50px);
-      }
       .show {
         opacity: 1;
         transform: translateX(0px);
@@ -188,18 +185,21 @@
           <p>Reflecting the global aspect of this hyper-event, this installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed which orbits in the present time of uncertainty.</p>
           <!--<button class="button">start</button>-->
         </div>
-        <div id="credits" class="hidden text-transition">
-          <p>
-            <i>concept and visuals:</i> <a target="_blank" href="https://www.albertoharres.com">alberto harres</a><br/><br/>
-            <i>composition and sound design:</i> <a target="_blank" href="http://www.chihimchik.com/">chi him chik</a><br/><br/>
-            <i>developed at the <a target="_blank" href="https://www.hfk-bremen.de/en">Hochschule für Künste Bremen</a>, and at the <a target="_blank" href="https://dogoresidenz.ch/en/">Dogo Residency</a> </i>
-          </p>
-        </div>
+        <br>
         <div id="links" class="hidden text-transition">
           <p>
             <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">archive database & API</a><br/><br/>
             <a target="_blank" href="https://www.mixcloud.com/soundstudies/modulation-18-alberto-harres/">modulations on the fly podcast #18</a>
           </p>
+        </div>
+        <div class="align-right">
+          <div id="credits" class="hidden text-transition">
+            <p>
+              <i>concept and visuals:</i> <a target="_blank" href="https://www.albertoharres.com">alberto harres</a><br/><br/>
+              <i>composition and sound design:</i> <a target="_blank" href="http://www.chihimchik.com/">chi him chik</a><br/><br/>
+              <i>developed at the <a target="_blank" href="https://www.hfk-bremen.de/en">Hochschule für Künste Bremen</a>, and <a target="_blank" href="https://dogoresidenz.ch/en/">Dogo Residency</a> </i>
+            </p>
+          </div>
         </div>
       </div>
     </div>

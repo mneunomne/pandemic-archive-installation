@@ -1,22 +1,32 @@
 document.addEventListener("DOMContentLoaded", function(){
+  // variables
   var started = false
   var loaded = false
   var dots_animation = null
-  const scene = $('#scene') 
+  var audios_loaded = false
+
+  // aframe elements 
+  let video = document.querySelector('video')
+  let audios = document.querySelectorAll('[sound]')
   const assets = document.querySelector('a-assets')
+  
+  // jquery elements
+  const scene = $('#scene') 
+  const $description = $("#description")
+  const $title = $("#title")
+  const $credits = $("#credits")
+  const $links = $("#links")
+  const $loading = $("#loading")
+  
+  // on all assets loaded
   assets.addEventListener('loaded', (evt) => {
     console.log('loaded', evt)
     loaded = true
     show()
     dots_animation && clearInterval(dots_animation)
   })
-  /*
-  const button = $('button')
-  button.click(() => { 
-    start()
-  })
-  */
 
+  // loading
   setTimeout(()=> {
     if (loaded) return
     $loading.removeClass("hidden")
@@ -28,13 +38,6 @@ document.addEventListener("DOMContentLoaded", function(){
       dots.innerHTML += ".";
     }, 500);
   })
-
-
-  const $description = $("#description")
-  const $title = $("#title")
-  const $credits = $("#credits")
-  const $links = $("#links")
-  const $loading = $("#loading")
 
   const show = function () {
     $loading.addClass('hidden');
@@ -63,12 +66,20 @@ document.addEventListener("DOMContentLoaded", function(){
     audios.forEach((audio) => {
       audio.components.sound.playSound();
     })
-
   }
 
-  let video = document.querySelector('video')
-  let audios = document.querySelectorAll('[sound]')
-
+  // load audios 
+  var loaded_audios = 0;
+  let audio_assets = document.querySelectorAll('audio')
+  audio_assets.forEach((a) => {
+    a.addEventListener('loadeddata', (evt) => {
+      loaded_audios++
+      if (loaded_audios === 8) {
+        console.log("all audio loaded!")
+        audios_loaded = true
+      }
+    })
+  })
 
   // detect any interaction
   document.body.addEventListener('keydown', start);
