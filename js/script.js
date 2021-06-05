@@ -87,11 +87,12 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   const start = function () {
-    $clicktostart.removeClass("show").addClass("hidden")
-    if (started) return;
-    started = true;
-    // button.style = "display: none;"
-    play()
+    if (loaded && loaded_audios === 8) {
+      $clicktostart.removeClass("show").addClass("hidden")
+      if (started) return;
+      started = true;
+      play()
+    }
   }
   
   // loop 
@@ -114,8 +115,8 @@ document.addEventListener("DOMContentLoaded", function(){
   var loaded_audios = 0;
   audios.forEach((audio) => {
     audio.addEventListener('sound-loaded', function() {
-      console.log("sound-loaded", loaded_audios)
       loaded_audios++
+      console.log("sound-loaded", loaded_audios)
       if (loaded_audios === 8) {
         console.log("all audio loaded!")
         audios_loaded = true
