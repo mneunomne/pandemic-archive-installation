@@ -112,6 +112,21 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // load audios 
   var loaded_audios = 0;
+  audios.forEach((audio) => {
+    audio.addEventListener('sound-loaded', function() {
+      console.log("sound-loaded", loaded_audios)
+      loaded_audios++
+      if (loaded_audios === 8) {
+        console.log("all audio loaded!")
+        audios_loaded = true
+        if (loaded) {
+          show()
+          dots_animation && clearInterval(dots_animation)
+        }
+      }
+    })
+  })
+  /*
   let audio_assets = document.querySelectorAll('audio')
   audio_assets.forEach((a) => {
     a.addEventListener('loadeddata', (evt) => {
@@ -126,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
     })
   })
+  */
 
   // detect any interaction
   document.body.addEventListener('keydown', start);
