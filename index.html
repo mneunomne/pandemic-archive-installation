@@ -90,9 +90,17 @@
         text-align: right;  
       }
 
+      #credits.hidden, #description.hidden, #title.hidden {
+        transform: translateX(-50px);
+      }
+      
       .hidden {
         opacity: 0;
-        transform: translateX(-50px);
+      }
+
+      #links.hidden {
+        opacity: 0;
+        transform: translateX(50px);
       }
       .show {
         opacity: 1;
@@ -100,6 +108,15 @@
       }
       .text-transition {
         transition: all 0.75s;
+      }
+
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.5s;
+        width: 100px;
       }
     </style>
   </head>
@@ -135,7 +152,7 @@
       <!-- room -->
       <a-entity id="room" room="w: 16; h: 20; z: 20;">
 
-        <a-image src="#silhouette-image" width="1" height="1.8" position="0 0.8 0" look-at="#camera" material="alphaTest: 0.1; blending: subtractive;" visible="" geometry=""></a-image>
+        <!--<a-image src="#silhouette-image" width="1" height="1.8" position="0 0.8 0" look-at="#camera" material="alphaTest: 0.1; blending: subtractive;" visible="" geometry=""></a-image>-->
 
         <a-video src="#floor-projection" width="10" height="10" rotation="-90 0 0" position="0 0.01 0"></a-video>
         
@@ -152,6 +169,9 @@
       <a-entity light="color: #BBB; type: ambient; decay: 0.92; intensity: 0.0" data-aframe-default-light="" aframe-injected="" visible=""></a-entity>
     </a-scene>
     <div id="container">
+      <div class="hidden" id="loading">
+        loading<span id="dots"></span>
+      </div>
       <div id="info">
         <h3 id="title" class="text-transition hidden"><a target="_blank" href="https://www.artforum.com/slant/paul-b-preciado-on-life-after-covid-19-82586">The living body is the central object of all politics.</a></h3>
         <div id="description" class="text-transition hidden">
@@ -159,14 +179,14 @@
           <p>Reflecting the global aspect of this hyper-event, this installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed which orbits in the present time of uncertainty.</p>
           <!--<button class="button">start</button>-->
         </div>
-        <div id="credits">
+        <div id="credits" class="hidden text-transition">
           <p>
             <i>concept and visuals:</i> <a target="_blank" href="https://www.albertoharres.com">alberto harres</a><br/><br/>
             <i>composition and sound design:</i> <a target="_blank" href="http://www.chihimchik.com/">chi him chik</a><br/><br/>
             <i>developed at the <a target="_blank" href="https://www.hfk-bremen.de/en">Hochschule für Künste Bremen</a>, and at the <a target="_blank" href="https://dogoresidenz.ch/en/">Dogo Residency</a> </i>
           </p>
         </div>
-        <div id="links">
+        <div id="links" class="hidden text-transition">
           <p>
             <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">archive database & API</a><br/><br/>
             <a target="_blank" href="https://www.mixcloud.com/soundstudies/modulation-18-alberto-harres/">modulations on the fly podcast #18</a>
