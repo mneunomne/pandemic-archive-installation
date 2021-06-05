@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function(){
   const $links = $("#links")
   const $loading = $("#loading")
   const $clicktostart = $("#click-to-start")
+  const $menu = $("#menu")
+  const $opt_abstract = $("#menu .opt_abstract")
+  const $opt_images = $("#menu .opt_images")
+  const $opt_links = $("#menu .opt_links")
   
   // on all assets loaded
   assets.addEventListener('loaded', (evt) => {
@@ -48,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // show text
     setTimeout(() => {
       $title.removeClass("hidden").addClass("show")
+      $menu.removeClass("hidden").addClass("show")
     }, 1000)
     setTimeout(() => {
       setTimeout(()=>{

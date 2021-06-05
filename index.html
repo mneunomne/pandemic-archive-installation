@@ -51,6 +51,13 @@
         padding-left: 2em;
         max-width: 90%;
       }
+
+      .info_body {
+        display: inline-block;
+        overflow: auto;
+        pointer-events: all;
+        max-height: calc(100vh - 150px);
+      }
       p {
         font-size: 12px;
         pointer-events: all;
@@ -148,6 +155,21 @@
         animation: blinker 2s linear infinite;
       }
 
+      ul {
+        list-style: none;
+        padding: 0px;
+      }
+
+      li {
+        display: inline-block;
+        font-size: 11px;
+        margin-right: 1em;
+      }
+
+      li:active, li.active {
+        text-decoration: underline;
+      }
+
       @keyframes blinker {
         0% {
           opacity: 0;
@@ -176,6 +198,10 @@
         }
       }
 
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+
     </style>
   </head>
   <body>
@@ -200,7 +226,7 @@
       </a-assets>
       
       <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;"> <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;" -->
-       <a-entity id="camera" rotation="-30.596 0.00 0.00" position="0.386 4.678 7.685" camera orbit-controls="target: 0 1.6 0; minDistance: 0.5; maxDistance: 10; initialPosition: 0.386 4.678 7.685; zoomSpeed: 0.75; maxPolarAngle: 100;"></a-entity> <!-- wasd-controls="acceleration:50; fly: true;" -->
+       <a-entity id="camera" rotation="-30.596 0.00 0.00" position="0.386 4.678 7.685" camera orbit-controls="target: 0 1.6 0; minDistance: 0.1; maxDistance: 10; initialPosition: 0.386 4.678 7.685; zoomSpeed: 1; maxPolarAngle: 110;"></a-entity> <!-- wasd-controls="acceleration:50; fly: true;" -->
        <!-- <a-entity id="camera" rotation="0 0.00 0.00" position="0 2.2 0" camera look-controls></a-entity> -->
       </a-entity>
 
@@ -237,18 +263,26 @@
 
       <div id="info">
         <h3 id="title" class="text-transition hidden"><a target="_blank" href="https://www.artforum.com/slant/paul-b-preciado-on-life-after-covid-19-82586">The living body is the central object of all politics.</a></h3>
-        <div id="description" class="text-transition hidden">
-          <p>The installation presents a dynamic archive of voices as an audio-visual experience, an algorithmic mantra, seeking to create a meditative space of communion during this time of collective struggle.</p>
-          <p>This <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">"pandemic archive of voices"</a> seeks to capture fragments of voices gravitating the current context of the pandemic, putting<br/> in perspective the diversity of cultures, backgrounds and language by which this global event can be seen through.</p>
-          <p>This installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed orbiting the uncertainty of our present time.</p>
+        <ul id="menu" class="text-transition hidden">
+          <li class="opt_abstract">abstract</li>
+          <li class="opt_images">images</li>
+          <li class="opt_links">links</li>
+        </ul>
+        
+        <div class="info_body">
+          <div id="description" class="text-transition hidden">
+            <p>The installation presents a dynamic archive of voices as an audio-visual experience, an algorithmic mantra, seeking to create a meditative space of communion during this time of collective struggle.</p>
+            <p>This <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">"pandemic archive of voices"</a> seeks to capture fragments of voices gravitating the current context of the pandemic, putting<br/> in perspective the diversity of cultures, backgrounds and language by which this global event can be seen through.</p>
+            <p>This installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed orbiting the uncertainty of our present time.</p>
+          </div>
+          <div id="links" class="hidden text-transition">
+            <p>
+              <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">archive database & API</a><br/><br/>
+              <a target="_blank" href="https://www.mixcloud.com/soundstudies/modulation-18-alberto-harres/">modulations on the fly podcast #18</a>
+            </p>
+          </div>
         </div>
         <br>
-        <div id="links" class="hidden text-transition">
-          <p>
-            <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">archive database & API</a><br/><br/>
-            <a target="_blank" href="https://www.mixcloud.com/soundstudies/modulation-18-alberto-harres/">modulations on the fly podcast #18</a>
-          </p>
-        </div>
         <div class="align-right">
           <div id="credits" class="hidden text-transition">
             <p>
