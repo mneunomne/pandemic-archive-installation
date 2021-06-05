@@ -6,12 +6,13 @@ document.addEventListener("DOMContentLoaded", function(){
       // start() 
     }, 2000)
   })
-
-  document.querySelector('button').addEventListener('click', () => { 
+  const button = document.querySelector('button')
+  button.addEventListener('click', () => { 
     start()
   })
 
   const start = function () {
+    button.style = "display: none;"
     video.play();
     audios.forEach((audio) => {
       console.log('audio',audio)

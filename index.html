@@ -25,12 +25,29 @@
         position: absolute;
         top: 10px;
         left: 10px;
+        padding: 15px; 
       }
       .description {
         width: 100%;
         max-width: 350px;
         font-size: 13px;
-        padding: 15px; 
+      }
+      .button {
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        padding: 4px 7px;
+      }
+      .button:hover {
+        text-decoration: underline;;
+      }
+      .button:active {
+        background: white;
+        color: black;
+      }
+      h3 {
+        font-weight: normal;
+        font-size: 16px;
       }
     </style>
   </head>
@@ -83,11 +100,11 @@
       <a-entity light="color: #BBB; type: ambient; decay: 0.92; intensity: 0.0" data-aframe-default-light="" aframe-injected="" visible=""></a-entity>
     </a-scene>
     <div id="container">
+      <h3><i>"The living body is the central object of all politics."</i></h3>
       <div class="description">
-        <p>"The living body is the central object of all politics."</p>
         <p>The installation presents a dynamic archive of voices as an audio visual experience. This archive seeks to create a collective experience of sharing, provides a singular meditative space of communion among the diversity of cultures, backgrounds, as well as subjective perspectives during this time of a collective struggle.</p>
         <p>Reflecting the global aspect of this hyper-event, this installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed which orbits in the present time of uncertainty.</p>
-        <button>play</button>
+        <button class="button">start</button>
       </div>
     </div>
   </body>
