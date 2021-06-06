@@ -72,6 +72,8 @@ document.addEventListener("DOMContentLoaded", function(){
   var textIsShowing = false
 
   const showText = function () {
+    $dragtomove.removeClass("show").addClass("hidden")
+
     textIsShowing = true 
     $description.removeClass("hidden").addClass("show")
     setTimeout(()=>{
@@ -221,6 +223,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
   var hammertime = new Hammer(document);
   hammertime.on('tap', function(evt) {
+    if (evt.target.nodeName === "A") return
+    console.log('tap', evt)
     if (textIsShowing) {
       hideText(evt)
     } else {
