@@ -164,9 +164,9 @@ document.addEventListener("DOMContentLoaded", function(){
   */
 
   // detect any interaction
-  document.body.addEventListener('keydown', start);
+  // document.body.addEventListener('keydown', start);
   document.body.addEventListener('click', start);
-  document.body.addEventListener('touchstart', start);
+  document.body.addEventListener('touchend', start);
 
   const canvas = document.querySelector(".a-canvas")
   var isClicking = false; 
