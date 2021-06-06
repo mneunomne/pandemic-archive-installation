@@ -159,11 +159,11 @@ body {
 
 
   @media only screen and (max-width: 600px) {
-    h3 {
-      font-size: 18px;
-    }
     #description p {
-      font-size: 13px;
+      font-size: 12px;
+    }
+    p {
+      font-size: 12px;
     }
     .align-right {
       position: absolute;
@@ -171,6 +171,15 @@ body {
       bottom: 2em;
       text-align: left;  
     }
+  }
+
+  @media only screen and (max-width: 350px) {
+    #description p {
+        font-size: 10px;
+      }
+      p {
+        font-size: 10px;
+      }
   }
 
   ::-webkit-scrollbar {
