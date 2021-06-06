@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const $links = $("#links")
   const $loading = $("#loading")
   const $clicktostart = $("#click-to-start")
+  const $dragtomove = $("#drag-to-move")
   const $menu = $("#menu")
   const $opt_abstract = $("#menu .opt_abstract")
   const $opt_images = $("#menu .opt_images")
@@ -52,15 +53,16 @@ document.addEventListener("DOMContentLoaded", function(){
     // show text
     setTimeout(() => {
       $title.removeClass("hidden").addClass("show")
-      $menu.removeClass("hidden").addClass("show")
+      // $menu.removeClass("hidden").addClass("show")
     }, 1000)
     setTimeout(() => {
       setTimeout(()=>{
         $clicktostart.removeClass("hidden").addClass("show")
       }, 500)
-      scene.addClass("show")
+      scene.removeClass("hidden").addClass("show")
     }, 2000)
     console.log('window.mobileCheck()', window.mobileCheck())
+    
     if (window.mobileCheck() === true) return 
     // show text
     setTimeout(showText, 1500)
@@ -86,12 +88,29 @@ document.addEventListener("DOMContentLoaded", function(){
     }, 200)
   }
 
+  var isShowingDragToMove = false 
+  var alreadyMoved = false
+
   const start = function () {
     if (loaded && loaded_audios === 8) {
       $clicktostart.removeClass("show").addClass("hidden")
+      // show drag to move
+      setTimeout(() => {
+        if (!alreadyMoved) {
+          $dragtomove.removeClass("hidden").addClass("show")
+          isShowingDragToMove = true;
+        }      
+      }, 500)
       if (started) return;
       started = true;
       play()
+    }
+  }
+
+  const onMoved = function () {
+    alreadyMoved = true
+    if (isShowingDragToMove) {
+      $dragtomove.removeClass("show").addClass("hidden")
     }
   }
   
@@ -148,6 +167,44 @@ document.addEventListener("DOMContentLoaded", function(){
   document.body.addEventListener('keydown', start);
   document.body.addEventListener('click', start);
   document.body.addEventListener('touchstart', start);
+
+  const canvas = document.querySelector(".a-canvas")
+  var isClicking = false; 
+
+  canvas.addEventListener("mousedown", function (evt){
+    isClicking = true
+  })
+
+  window.addEventListener('mouseup', e => {
+    if (isClicking === true) {
+      isClicking = false;
+      moveCount = 0;
+    }
+  });
+
+  var moveCount = 0;
+
+  canvas.addEventListener("mousemove", function (evt){
+    if (isClicking) {
+      moveCount++;
+      if (moveCount > 5) {
+        onMoved()
+        // moved!
+      }
+    }
+  })
+
+  canvas.addEventListener("touchstart", function (evt){
+    moveCount = 0;
+  })
+
+  canvas.addEventListener("touchmove", function (evt){
+    moveCount++;
+    if (moveCount > 5) {
+      // moved!
+      onMoved()
+    }
+  })
 
 })
 

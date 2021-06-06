@@ -55,12 +55,13 @@
       .info_body {
         display: inline-block;
         overflow: auto;
-        pointer-events: all;
+        pointer-events: none;
         max-height: calc(100vh - 150px);
       }
       p {
         font-size: 12px;
         pointer-events: all;
+        cursor: text;
         display: inline-block;
       }
       a {
@@ -118,6 +119,11 @@
       
       .hidden {
         opacity: 0;
+        pointer-events: none;
+      }
+
+      .hidden p {
+        pointer-events: none;
       }
 
       .show {
@@ -138,6 +144,10 @@
       }
 
       #click-to-start {
+        width: 200px;
+      }
+
+      .notification {
         position: absolute;
         top: 20%;
         left: 50%;
@@ -150,8 +160,7 @@
         opacity: 0;
       }
 
-
-      #click-to-start.show {
+      .notification.show {
         animation: blinker 2s linear infinite;
       }
 
@@ -225,8 +234,8 @@
         <a-asset-item id="loud-speaker" src="3d/Electronics_Speaker-On-Stand/model.dae"></a-asset-item>
       </a-assets>
       
-      <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;"> <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;" -->
-       <a-entity id="camera" rotation="-30.596 0.00 0.00" position="0.386 3.678 5.685" camera orbit-controls="target: 0 1.6 0; minDistance: 0.1; maxDistance: 10; initialPosition: 0.386 2.678 3.685; zoomSpeed: 1; maxPolarAngle: 110;"></a-entity> <!-- wasd-controls="acceleration:50; fly: true;" -->
+      <a-entity id="camera-parent" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;"> <!-- animation="property: rotation; to: 0 360 0; loop: true; dur: 50000; easing: linear;" -->
+       <a-entity id="camera" camera-event rotation="-30.596 0.00 0.00" position="0.386 3.678 5.685" camera orbit-controls="target: 0 1.6 0; minDistance: 0.1; maxDistance: 10; initialPosition: 0.386 2.678 3.685; zoomSpeed: 1; maxPolarAngle: 110;"></a-entity> <!-- wasd-controls="acceleration:50; fly: true;" -->
        <!-- <a-entity id="camera" rotation="0 0.00 0.00" position="0 2.2 0" camera look-controls></a-entity> -->
       </a-entity>
 
@@ -257,8 +266,12 @@
         loading<span id="dots"></span>
       </div>
 
-      <div id="click-to-start" class="hidden">
+      <div id="click-to-start" class="notification hidden">
         click anyware to play
+      </div>
+
+      <div id="drag-to-move" class="notification hidden">
+        drag to move
       </div>
 
       <div id="info">
@@ -275,7 +288,7 @@
         <div class="info_body">
           <div id="description" class="text-transition hidden">
             <p>The installation presents a dynamic archive of voices as an audio-visual experience, an algorithmic mantra, seeking to create a meditative space of communion during this time of collective struggle.</p>
-            <p>This <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">"pandemic archive of voices"</a> seeks to capture fragments of voices gravitating the current context of the pandemic, putting<br/> in perspective the diversity of cultures, backgrounds and language by which this global event can be seen through.</p>
+            <p>This <a target="_blank" href="https://github.com/mneunomne/pandemic-archive-of-voices-DB">pandemic archive of voices</a> seeks to capture fragments of voices gravitating the current context of the pandemic, putting<br/> in perspective the diversity of cultures, backgrounds and language by which this global event can be seen through.</p>
             <p>This installation is produced as a language-specific experience. Through the exploration of interaction and collisions between sounds, images, and shapes of different languages, an abstract environment is formed orbiting the uncertainty of our present time.</p>
           </div>
           <div id="links" class="hidden text-transition">
@@ -291,7 +304,7 @@
             <p>
               <i>concept and visuals:</i> <a target="_blank" href="https://www.albertoharres.com">Alberto Harres</a><br/><br/>
               <i>composition and sound design:</i> <a target="_blank" href="http://www.chihimchik.com/">Chi Him Chik</a><br/><br/>
-              <i>developed at the <a target="_blank" href="https://www.hfk-bremen.de/en">Hochschule für Künste Bremen</a>, and <a target="_blank" href="https://dogoresidenz.ch/en/">Dogo Residency</a> </i>
+              <i>developed at the <a target="_blank" href="https://digitalmedia-bremen.de/">Hochschule für Künste Bremen</a>, and <a target="_blank" href="https://dogoresidenz.ch/en/">Dogo Residency</a> </i>
             </p>
           </div>
         </div>
