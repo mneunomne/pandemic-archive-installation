@@ -91,7 +91,8 @@ document.addEventListener("DOMContentLoaded", function(){
   var isShowingDragToMove = false 
   var alreadyMoved = false
 
-  const start = function () {
+  const start = function (evt) {
+    console.log("START!", evt)
     if (loaded && loaded_audios === 8) {
       $clicktostart.removeClass("show").addClass("hidden")
       // show drag to move
@@ -165,8 +166,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // detect any interaction
   // document.body.addEventListener('keydown', start);
-  document.body.addEventListener('click', start);
-  document.body.addEventListener('touchend', start);
+  document.body.addEventListener('click', e => start(e));
+  document.body.addEventListener('touchend', e => start(e));
 
   const canvas = document.querySelector(".a-canvas")
   var isClicking = false; 
