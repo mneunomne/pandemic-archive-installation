@@ -223,6 +223,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   var hammertime = new Hammer(document);
   hammertime.on('tap', function(evt) {
+    if (window.mobileCheck() === false) return
     if (evt.target.nodeName === "A") return
     console.log('tap', evt)
     if (textIsShowing) {
