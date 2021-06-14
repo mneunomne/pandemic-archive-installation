@@ -37,9 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("loading!");
   $loading.removeClass("hidden").addClass("show");
   dots_animation = setInterval(function () {
-    console.log("ASASDASDASDASDASDASDAS");
     var dots = document.getElementById("dots");
-
     if (dots.innerHTML.length > 2) {
       dots.innerHTML = "";
     } else {
@@ -53,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $title.removeClass("hidden").addClass("show"); // $menu.removeClass("hidden").addClass("show")
     }, 1000);
     setTimeout(() => {
-      if (window.mobileCheck() === true) {
+      if (window.mobileCheck() === false) {
         setTimeout(() => {
           $clicktostart.removeClass("hidden").addClass("show");
         }, 500);
@@ -96,9 +94,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var alreadyMoved = false;
 
   const start = function (evt) {
-    console.log("START!", evt.type);
+    console.log("START!", loaded && loaded_audios, loaded , loaded_audios);
     if (loaded && loaded_audios === 8) {
-      if (window.mobileCheck() === true) {
+      if (window.mobileCheck() === false) {
         $clicktostart.removeClass("show").addClass("hidden");
       }
       setTimeout(() => {
