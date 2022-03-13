@@ -166,7 +166,7 @@ body {
       font-size: 12px;
     }
     .align-right {
-      position: absolute;
+      position: initial !important;
       left: 2em;
       bottom: 2em;
       text-align: left;  

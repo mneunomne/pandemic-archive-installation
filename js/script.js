@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
       scene.removeClass("hidden").addClass("show");
     }, 2000); // if (window.mobileCheck() === true) return 
     // show text
-
     setTimeout(showText, 1500);
   };
 

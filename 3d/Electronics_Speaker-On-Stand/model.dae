@@ -3416,20 +3416,6 @@
             </profile_COMMON>
         </effect>
     </library_effects>
-    <library_images>
-        <image id="ID371">
-            <init_from>model/Speaker_Box_Wood.jpg</init_from>
-        </image>
-        <image id="ID408">
-            <init_from>model/Front_Mess_Fencing_Mesh_Blue.png</init_from>
-        </image>
-        <image id="ID418">
-            <init_from>model/Front_Mess_Fencing_Mesh_Blue_0.png</init_from>
-        </image>
-        <image id="ID425">
-            <init_from>model/Front_Mess_Fencing_Mesh_Blue_1.png</init_from>
-        </image>
-    </library_images>
     <scene>
         <instance_visual_scene url="#ID2" />
     </scene>
