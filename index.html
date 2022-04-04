@@ -59,7 +59,7 @@
         <a-asset-item id="loud-speaker" src="3d/Electronics_Speaker-On-Stand/model.dae"></a-asset-item>
       </a-assets>
             
-      <a-sky color="#1f1f1f"></a-sky>
+      <a-sky color="#000000"></a-sky>
 
       <!-- room -->
       <a-entity id="room" room="w: 16; h: 20; z: 20;">
@@ -78,13 +78,15 @@
         <a-entity sound="src: #audio_speaker_8; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 3.5; index: 6;" scale="2.0 2.0 2.0" rotation="0 90 0" collada-model="src: #loud-speaker"></a-entity>
         <a-entity sound="src: #audio_speaker_7; volume: 1.5: distanceModel: linear;" spawn-in-circle="radius: 3.5; index: 7;" scale="2.0 2.0 2.0" rotation="0 90 0" collada-model="src: #loud-speaker"></a-entity>
 
+        <!--
         <a-entity visible="true" geometry="primitive: box;" position="0 4.3 0" material="shader: flat; color: gray;" scale="0.593 0.636 0.207"></a-entity>
         <a-entity visible="true" geometry="primitive: cone; radiusBottom: 3.0; height: 4.0" position="0 2.5 0" material="shader: flat; color: gray; opacity: 0.1;"></a-entity>
+        -->
 
       </a-entity>
       <a-entity light="color: #BBB; type: ambient; decay: 0.92; intensity: 0.0" data-aframe-default-light="" aframe-injected="" visible=""></a-entity>
     </a-scene>
-    <div id="container" style="display: none;">
+    <div id="container">
       <div class="hidden" id="loading">
         loading<span id="dots"></span>
       </div>
